@@ -1,7 +1,6 @@
 {
   "name": "custom-api-dan",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "mattperkins <github@mattperkins.com>",
+  "main": "server.js",
   "license": "MIT"
 }
