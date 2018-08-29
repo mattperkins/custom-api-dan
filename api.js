@@ -23,16 +23,22 @@ function addWord(req,res){
  let score = Number(data2.score)
  let reply
  if(!score){
-  reply = "Score is a required path/parameter"
+  reply = {
+    msg: "Score is a required path/parameter" 
+   }
  } else {
 // words = object at top of file (file database)
  users[word] = score
- let data = JSON.stringify(users)
+ let data = JSON.stringify(users, null, 2)
  fs.writeFile('users.json', data, fin)
  function fin(err){
   console.log('User added to file database')
  }
- reply = "Your user has been added"
+ reply = {
+  status: "success",
+  word,
+  score
+ }
 }
  res.send(reply)
 }
@@ -48,7 +54,7 @@ function sendAll(req,res){
 
 // SEARCH DB
 // search for word in file database
-app.get('/search2/:fileDb', fileDB)
+app.get('/search/:fileDb', fileDB)
 function fileDB(req,res){
  let fileDb = req.params.fileDb
  let reply
