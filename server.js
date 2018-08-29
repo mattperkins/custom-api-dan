@@ -36,6 +36,17 @@ function loop(req,res){
  res.send(reply)
 }
 
+// 
+app.get('/add/:word/:score', addWord)
+function addWord(req,res){
+ let data2 = req.params
+ let word = data2.word
+ let score = Number(data2.score)
+
+ words[word] = score
+ let reply = "Your word has been added"
+ res.send(reply)
+}
 app.get('/all', sendAll)
 function sendAll(req,res){
  res.send(words)
