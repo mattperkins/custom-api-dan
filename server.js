@@ -1,3 +1,8 @@
+let words = {
+ "lemon": 5,
+ "lime": 3,
+ "peach": 1
+}
 const express = require('express')
 const app = express()
 
