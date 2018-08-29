@@ -2,10 +2,9 @@
 ## yarn 
 
 # RUN 
-## yarn start 
+## nodemon server.js 
 
 # ENDPOINTS 
 ## localhost: 
 
 # DEPLOY 
-## npm build
