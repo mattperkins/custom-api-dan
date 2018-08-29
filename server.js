@@ -4,6 +4,8 @@ let words = {
  "lime": 3,
  "peach": 1
 }
+
+// instantiate the app
 const express = require('express')
 const app = express()
 
@@ -14,18 +16,21 @@ console.log(`App is running on PORT:${PORT}`)
 function listening() {
  console.log('Callback confirmed')
 }
-
+// add static html to route
 app.use(express.static('static'))
 
+// create a user route
 app.get('/user', getUser)
 function getUser(req,res){
  res.send('User request received')
 }
+// search route params example
 app.get('/search/:query', search)
 function search(req,res){
  let data = req.params
  res.send(`Search for ${data.query} received`)
 }
+// adding a second route path param
 app.get('/loop/:query/:num', loop)
 function loop(req,res){
  let data = req.params
@@ -36,8 +41,7 @@ function loop(req,res){
  }
  res.send(reply)
 }
-
-// ? makes score optional 
+// '?' makes score optional 
 app.get('/add/:word/:score?', addWord)
 function addWord(req,res){
  let data2 = req.params
