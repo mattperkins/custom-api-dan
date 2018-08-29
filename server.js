@@ -43,12 +43,39 @@ function addWord(req,res){
  let data2 = req.params
  let word = data2.word
  let score = Number(data2.score)
+ let reply
+
+ if(!score){
+  reply = "Score is a required path/parameter"
+ } else {
 // words = object at top of file (file database)
  words[word] = score
- let reply = "Your word has been added"
+ reply = "Your word has been added"
+}
  res.send(reply)
 }
+
+// show all file database entries
 app.get('/all', sendAll)
 function sendAll(req,res){
  res.send(words)
+}
+
+// search for word in file database
+app.get('/search2/:fileDb', fileDB)
+function fileDB(req,res){
+ let fileDb = req.params.fileDb
+ let reply
+ if(words[fileDb]){
+  reply = {
+  status: "Found",
+  fileDb,
+  score: words[fileDb]
+ }
+ } else {
+  reply = {
+   status: "not found",
+   fileDb
+  }
+ } res.send(reply)
 }
