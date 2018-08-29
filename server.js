@@ -30,3 +30,14 @@ function search(req,res){
  let data = req.params
  res.send(`Search for ${data.query} received`)
 }
+// adding a second route path param
+app.get('/loop/:query/:num', loop)
+function loop(req,res){
+ let data = req.params
+ let num = data.num
+ let reply = ""
+ for (var i=0; i<num; i++){
+  reply += `Print loop for ${data.query} \n`
+ }
+ res.send(reply)
+}

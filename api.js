@@ -14,42 +14,39 @@ function listening() {
  console.log('Callback confirmed')
 }
 
-// adding a second route path param
-app.get('/loop/:query/:num', loop)
-function loop(req,res){
- let data = req.params
- let num = data.num
- let reply = ""
- for (var i=0; i<num; i++){
-  reply += `Print loop for ${data.query} \n`
- }
- res.send(reply)
-}
-// '?' makes score optional 
+// ADD USER
+// score is optional 
 app.get('/add/:word/:score?', addWord)
 function addWord(req,res){
  let data2 = req.params
  let word = data2.word
  let score = Number(data2.score)
  let reply
-
  if(!score){
   reply = "Score is a required path/parameter"
  } else {
 // words = object at top of file (file database)
  users[word] = score
-
- reply = "Your word has been added"
+ let data = JSON.stringify(users)
+ fs.writeFile('users.json', data, fin)
+ function fin(err){
+  console.log('User added to file database')
+ }
+ reply = "Your user has been added"
 }
  res.send(reply)
 }
 
+
+// SHOW ALL ENTRIES IN DB
 // show all file database entries
 app.get('/all', sendAll)
 function sendAll(req,res){
  res.send(users)
 }
 
+
+// SEARCH DB
 // search for word in file database
 app.get('/search2/:fileDb', fileDB)
 function fileDB(req,res){
