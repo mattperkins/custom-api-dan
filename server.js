@@ -1,3 +1,4 @@
+// file database
 let words = {
  "lemon": 5,
  "lime": 3,
@@ -36,13 +37,13 @@ function loop(req,res){
  res.send(reply)
 }
 
-// 
-app.get('/add/:word/:score', addWord)
+// ? makes score optional 
+app.get('/add/:word/:score?', addWord)
 function addWord(req,res){
  let data2 = req.params
  let word = data2.word
  let score = Number(data2.score)
-
+// words = object at top of file (file database)
  words[word] = score
  let reply = "Your word has been added"
  res.send(reply)
