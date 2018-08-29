@@ -35,3 +35,8 @@ function loop(req,res){
  }
  res.send(reply)
 }
+
+app.get('/all', sendAll)
+function sendAll(req,res){
+ res.send(words)
+}
