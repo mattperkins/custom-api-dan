@@ -15,20 +15,20 @@ function listening() {
 }
 
 // ADD USER
-// score is optional 
-app.get('/add/:word/:score?', addWord)
-function addWord(req,res){
+// age is optional 
+app.get('/add/:user/:age?', adduser)
+function adduser(req,res){
  let data2 = req.params
- let word = data2.word
- let score = Number(data2.score)
+ let user = data2.user
+ let age = Number(data2.age)
  let reply
- if(!score){
+ if(!age){
   reply = {
-    msg: "Score is a required path/parameter" 
+    msg: "age is a required path/parameter" 
    }
  } else {
-// words = object at top of file (file database)
- users[word] = score
+// users = object at top of file (file database)
+ users[user] = age
  let data = JSON.stringify(users, null, 2)
  fs.writeFile('users.json', data, fin)
  function fin(err){
@@ -36,8 +36,8 @@ function addWord(req,res){
  }
  reply = {
   status: "success",
-  word,
-  score
+  user,
+  age
  }
 }
  res.send(reply)
@@ -53,7 +53,7 @@ function sendAll(req,res){
 
 
 // SEARCH DB
-// search for word in file database
+// search for user in file database
 app.get('/search/:fileDb', fileDB)
 function fileDB(req,res){
  let fileDb = req.params.fileDb
@@ -62,7 +62,7 @@ function fileDB(req,res){
   reply = {
   status: "Found",
   fileDb,
-  score: users[fileDb]
+  age: users[fileDb]
  }
  } else {
   reply = {
