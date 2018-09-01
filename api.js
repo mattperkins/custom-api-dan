@@ -13,6 +13,11 @@ console.log(`App is running on PORT:${PORT}`)
 function listening () {
   console.log('Callback confirmed')
 }
+
+// add static html to route
+app.use(express.static('static'))
+
+
 // ADD USER
 // age is optional
 app.get('/add/:user/:age?', adduser)
