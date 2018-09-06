@@ -1,9 +1,9 @@
 {
   "name": "custom-api-dan",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "api.js",
   "license": "MIT",
-  "script" : {
+  "scripts" : {
 	"start": "node api.js",
 	"dev": "nodemon api.js"
 },
