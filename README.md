@@ -5,6 +5,10 @@
 ## nodemon server.js 
 
 # ENDPOINTS 
-## localhost: 
+## localhost: 3000
+## /all
+## /search/userName
+## /add/userName/23
 
 # DEPLOY 
+## yarn deploy

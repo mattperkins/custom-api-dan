@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "api.js",
   "license": "MIT",
-  "scripts" : {
-	"start": "node api.js",
-	"dev": "nodemon api.js"
+  "scripts": {
+    "start": "node api.js",
+    "dev": "nodemon api.js",
+    "deploy": "now && now alias"
 },
   "dependencies": {
     "express": "^4.16.3"
